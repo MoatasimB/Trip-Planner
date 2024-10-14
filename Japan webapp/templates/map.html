@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps with Markers</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap" async defer></script>
+    <script type="text/javascript">
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 35.6895, lng: 139.6917} // Center the map around Tokyo
+        });
+
+        var locations = {{ locations|tojson }};
+
+        for (var i = 0; i < locations.length; i++) {
+          var marker = new google.maps.Marker({
+            position: {lat: locations[i][1], lng: locations[i][2]},
+            map: map,
+            title: locations[i][0]
+          });
+        }
+      }
+    </script>
+</head>
+<body>
+    <h1>Map of Places to Visit in Japan</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('calendar_page') }}">Calendar</a></li>
+            <li><a href="{{ url_for('page2') }}">Page 2</a></li>
+        </ul>
+    </nav>
+    <div id="map" style="height: 600px; width: 100%;"></div>
+</body>
+</html>

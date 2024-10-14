@@ -1,0 +1,108 @@
+/* Reset background customization and remove banner styles */
+body {
+  font-family: Helvetica, Arial, sans-serif; /* Change font to Helvetica */
+}
+
+h1 {
+  color: #333;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+form {
+  margin: 20px 0;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+
+
+
+/* Calendar table styles */
+table {
+    width: 90%; /* Increase width to make the calendar larger */
+    max-width: 800px; /* Increase max width for larger screens */
+    border-collapse: collapse;
+    margin: 20px auto; /* Center the table with margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Increased padding for more space */
+    text-align: right; /* Align text to the right */
+    vertical-align: top; /* Align text to the top */
+}
+
+th {
+    background-color: #003366; /* Dark blue background for headers */
+    color: white; /* White text color for headers */
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff; /* White background for cells */
+    color: #333; /* Dark text color for contrast */
+    height: 120px; /* Increased height to make cells larger */
+    width: 120px; /* Increased width to maintain square shape */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+    position: relative; /* Ensure correct positioning of numbers */
+}
+
+tr:hover td {
+    background-color: #f1f1f1; /* Light gray for hover effect */
+}
+
+thead th {
+    background-color: #003366; /* Dark blue background for header cells */
+}
+
+caption {
+    font-size: 1.5em;
+    margin: 10px 0; /* Space around the caption */
+    color: #333;
+}
+
+/* Highlighted date styles */
+.highlight-start {
+    background-color: lightgreen !important; /* Ensure visibility */
+    color: #000; /* Ensure text is readable */
+}
+
+.highlight-end {
+    background-color: lightcoral !important; /* Ensure visibility */
+    color: #000; /* Ensure text is readable */
+}
+
+.highlight-range {
+    background-color: lightyellow !important; /* Ensure visibility */
+    color: #000; /* Ensure text is readable */
+}
+
+/* Ensure day numbers are visible above background colors */
+td::before {
+    content: attr(data-day);
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    font-weight: bold;
+    color: #333; /* Ensure text is readable */
+}

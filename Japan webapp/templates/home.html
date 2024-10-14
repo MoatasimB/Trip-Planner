@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+        background-repeat:no-repeat;
+        background-attacked:fixed;
+        background-size:cover;
+        background-position: right 5%;
+        background-image: url({{ url_for('static', filename='background_image.png')}})
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Japan Trip Planner</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('calendar_page') }}">Calendar</a></li>
+            <li><a href="{{ url_for('page2') }}">Page 2</a></li>
+            <li><a href="{{ url_for('map_page') }}">Map</a></li>
+        </ul>
+    </nav>
+    <p>Welcome to the home page~ ଘ(੭ˊᵕˋ)੭* ੈ✩‧˚</p>
+
+    <!-- Date input form -->
+    <form method="post">
+        <label for="start_date">Start Date:</label>
+        <input type="text" id="start_date" name="start_date" placeholder="mm/dd/yyyy" required>
+        <br>
+        <label for="end_date">End Date:</label>
+        <input type="text" id="end_date" name="end_date" placeholder="mm/dd/yyyy" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div>
+        {% if days_until_trip is not none %}
+            <p>Your trip is {{ days_until_trip }} days away!（ꉺᗜꉺ）</p>
+        {% endif %}
+        <p>New York (EST): {{ local_time }}</p>
+        <p>Japan (JST): {{ japan_time }}</p>
+        <p>Time Difference: {{ time_difference_str }}</p>
+        {% if start_date and end_date %}
+            <p>Start Date: {{ start_date }}</p>
+            <p>End Date: {{ end_date }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
